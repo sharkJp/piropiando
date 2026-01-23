@@ -1,0 +1,422 @@
+ * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: "Segoe UI", sans-serif;
+        }
+
+        body {
+            background: radial-gradient(circle at top, #1f1f1f, #0d0d0d);
+            color: white;
+            overflow-x: hidden;
+        }
+
+        .hero {
+            height: 100vh;
+            padding: 50px 20px;
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+            align-items: center;
+            background:
+                linear-gradient(180deg, rgba(0, 0, 0, .6), rgba(0, 0, 0, .9)),
+                url("hero-bg.jpg") center / cover no-repeat fixed;
+        }
+        .hero-fixed {
+  flex-shrink: 0;
+  padding-bottom: 16px;
+  animation: heroEnter 0.9s ease-out both;
+}
+
+@keyframes heroEnter {
+  from {
+    opacity: 0;
+    transform: translateY(-12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+        /* ===== TÍTULO ===== */
+        .hero-logo {
+            font-size: clamp(2rem, 7vw, 3rem);
+            font-weight: 800;
+            color: #ff7a63;
+            text-align: center;
+            line-height: 1.1;
+            margin-bottom: .3rem;
+        }
+
+        .hero-logo strong {
+            font-weight: 900;
+            letter-spacing: 2px;
+        }
+
+        .hero-sub {
+            font-size: .8rem;
+            letter-spacing: .15em;
+            opacity: .75;
+            margin-bottom: 25px;
+        }
+
+        /* ===== FORM ===== */
+        .form-card {
+            width: 100%;
+            max-width: 420px;
+            padding: 26px;
+            border-radius: 22px;
+            background: linear-gradient(135deg,
+                    rgba(255, 255, 255, 0.18),
+                    rgba(255, 255, 255, 0.05));
+            backdrop-filter: blur(22px) saturate(160%);
+            -webkit-backdrop-filter: blur(22px) saturate(160%);
+            border-radius: 24px;
+            border: 1px solid rgba(255, 255, 255, 0.25);
+            box-shadow:
+                0 20px 40px rgba(0, 0, 0, 0.45),
+                inset 0 1px 0 rgba(255, 255, 255, 0.25);
+            margin-bottom: 20px;
+            transition:
+                transform 0.45s cubic-bezier(0.22, 1, 0.36, 1),
+                box-shadow 0.45s ease,
+                background 0.45s ease;
+
+            animation: cardEnter 0.8s ease-out both;
+            animation-delay: 0.2s;
+        }
+
+        .form-card:hover {
+            transform: translateY(-8px) scale(1.015);
+            box-shadow:
+                0 30px 60px rgba(0, 0, 0, 0.55),
+                inset 0 1px 0 rgba(255, 255, 255, 0.3);
+        }
+
+        @media (hover: hover) {
+            .form-card:hover {
+                transform: translateY(-8px) scale(1.015);
+            }
+        }
+@media (hover: none) {
+  .form-card {
+    transition: transform 0.35s ease;
+  }
+
+  .form-card:active {
+    transform: scale(0.98);
+  }
+}
+
+        @keyframes cardEnter {
+            from {
+                opacity: 0;
+                transform: translateY(18px) scale(0.96);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0) scale(1);
+            }
+        }
+
+        input,
+        textarea {
+            width: 100%;
+            padding: 14px 16px;
+            margin-bottom: 14px;
+            border-radius: 14px;
+            border: 1px solid rgba(255, 255, 255, .15);
+            background: rgba(0, 0, 0, .35);
+            color: white;
+            font-size: 1rem;
+            outline: none;
+        }
+
+        input::placeholder,
+        textarea::placeholder {
+            color: rgba(255, 255, 255, .5);
+        }
+
+        input:focus,
+        textarea:focus {
+            border-color: rgba(255, 126, 103, .8);
+            box-shadow: 0 0 0 2px rgba(255, 126, 103, .25);
+        }
+
+        .btn-primary {
+            width: 100%;
+            padding: 16px;
+            border-radius: 999px;
+            border: none;
+            background: linear-gradient(135deg, #ff7e67, #ff9a8b);
+            color: white;
+            font-weight: 700;
+            cursor: pointer;
+            box-shadow: 0 8px 25px rgba(255, 126, 103, .4);
+        }
+
+        /* ===== FEEDBACK ===== */
+        #feedback {
+            font-size: .8rem;
+            opacity: .0;
+            margin-bottom: 10px;
+              transition: opacity 0.4s ease, transform 0.4s ease;
+  transform: translateY(-6px);
+        }
+
+        #feedback.show {
+  opacity: 0.85;
+  transform: translateY(0);
+}
+
+        /* ===== FEED ===== */
+        #piropos-feed {
+            width: 100%;
+            max-width: 520px;
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
+        }
+
+        .piropo-card {
+            padding: 18px;
+            border-radius: 18px;
+            background: rgba(255, 255, 255, .06);
+            border-left: 6px solid #ff7e67;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, .4);
+            animation: fadeIn .4s ease;
+        }
+
+        .piropo-text {
+            font-style: italic;
+            margin-bottom: 6px;
+        }
+
+        .piropo-author {
+            color: #ff7e67;
+            font-size: .85rem;
+            font-weight: bold;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero {
+                padding-top: 35px;
+            }
+
+            .hero-logo {
+                font-size: 2.2rem;
+            }
+
+            .hero-sub {
+                font-size: .7rem;
+            }
+        }
+
+        .hero-logo {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 0.4rem;
+            flex-wrap: wrap;
+            animation: fadeUp 0.8s ease-out;
+        }
+
+        .hero-pre {
+            font-weight: 400;
+            opacity: 0.65;
+        }
+
+        .hero-main {
+            font-weight: 900;
+            letter-spacing: 2px;
+            background: linear-gradient(90deg, #ff7a7a, #ffb199, #ff7a7a);
+            background-size: 200%;
+            -webkit-background-clip: text;
+            color: transparent;
+            animation:
+                gradientFlow 4s ease-in-out infinite,
+                pulseGlow 3s ease-in-out infinite;
+        }
+
+        .hero-emoji {
+            display: inline-block;
+            animation: wink 4s infinite;
+        }
+
+        /* ===== ANIMACIONES ===== */
+        @keyframes fadeUp {
+            from {
+                opacity: 0;
+                transform: translateY(12px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes gradientFlow {
+            0% {
+                background-position: 0%;
+            }
+
+            50% {
+                background-position: 100%;
+            }
+
+            100% {
+                background-position: 0%;
+            }
+        }
+
+        @keyframes pulseGlow {
+
+            0%,
+            100% {
+                text-shadow: 0 0 8px rgba(255, 126, 103, .3);
+            }
+
+            50% {
+                text-shadow: 0 0 18px rgba(255, 126, 103, .6);
+            }
+        }
+
+        @keyframes wink {
+
+            0%,
+            90%,
+            100% {
+                transform: scale(1);
+            }
+
+            95% {
+                transform: scale(1.25);
+            }
+        }
+
+        /* Mobile fine-tuning */
+        @media (max-width: 480px) {
+            .hero-logo {
+                gap: 0.25rem;
+            }
+        }
+
+        @keyframes formEnter {
+            from {
+                opacity: 0;
+                transform: translateY(18px) scale(0.98);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0) scale(1);
+            }
+        }
+
+        input:focus,
+        textarea:focus {
+            transform: scale(1.01);
+        }
+
+        .btn-primary.sending {
+            animation: sendPulse 0.6s ease;
+        }
+
+        @keyframes sendPulse {
+            0% {
+                transform: scale(1);
+            }
+
+            50% {
+                transform: scale(0.96);
+            }
+
+            100% {
+                transform: scale(1);
+            }
+        }
+
+        .piropos-scroll {
+  flex: 1;
+  overflow-y: auto;
+   width: 100%;
+  max-width: 520px;
+  padding: 10px 6px 30px;
+
+  /* scroll suave */
+  scroll-behavior: smooth;
+}
+
+/* Scrollbar bonito (desktop) */
+.piropos-scroll::-webkit-scrollbar {
+  width: 6px;
+}
+
+.piropos-scroll::-webkit-scrollbar-thumb {
+  background: rgba(255, 126, 103, 0.4);
+  border-radius: 10px;
+}
+@media (max-width: 768px) {
+  .hero-logo {
+    animation: fadeDown 0.6s ease-out both;
+  }
+
+  .form-card {
+    animation: cardEnter 0.6s ease-out both;
+  }
+}
+
+@keyframes fadeDown {
+  from {
+    opacity: 0;
+    transform: translateY(-8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+@media (min-width: 769px) {
+  .hero-logo {
+    animation: glowFloat 4s ease-in-out infinite;
+  }
+
+  .form-card:hover {
+    transform: translateY(-10px) scale(1.02);
+  }
+}
+
+@keyframes glowFloat {
+  0%, 100% {
+    transform: translateY(0);
+    text-shadow: 0 0 12px rgba(255, 122, 99, 0.4);
+  }
+  50% {
+    transform: translateY(-4px);
+    text-shadow: 0 0 22px rgba(255, 122, 99, 0.7);
+  }
+}
+.hero-logo span {
+  display: inline-block;
+  animation: wink 4s infinite;
+}
+
+@keyframes wink {
+  0%, 92%, 100% { transform: scale(1); }
+  96% { transform: scale(1.2); }
+}

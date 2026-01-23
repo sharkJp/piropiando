@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="theme-color" content="#ff7e67">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Guiño - Micro-dosis de amor</title>
+    <link rel="stylesheet" href="css/estilos.css">
+<link rel="manifest" href="/manifest.json">
+
+</head>
+
+<body>
+    <section class="hero">
+        <h1 class="hero-logo hero-fixed" id="romero-title">
+            <span class="hero-pre">Me dicen</span>
+            <span class="hero-main">ROMEO</span>
+            <span class="hero-emoji">😏</span>
+        </h1>
+
+        <p class="hero-sub">piropos que se sienten</p>
+
+        <div class="form-card">
+            <input id="author" placeholder="Tu nombre (opcional)" />
+            <textarea id="content" placeholder="Escribe tu piropo aquí..."></textarea>
+            <button id="send-btn" class="btn-primary">Enviar Guiño ✨</button>
+        </div>
+
+        <p id="feedback">✨ Ajustamos el lenguaje para que suene más romántico</p>
+
+        <div id="piropos-feed" class="piropos-scroll"></div>
+    </section>
+
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="/js/main.js"></script>
+</body>
+
+</html>
