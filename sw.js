@@ -1,35 +1,41 @@
-const CACHE_NAME = "guino-v1";
-const FILES_TO_CACHE = [
+const CACHE_NAME = "romeo-v1";
+const OFFLINE_URL = "/";
+
+const ASSETS = [
   "/",
   "/index.html",
+  "/offline.html",
   "/css/estilos.css",
   "/js/main.js",
-  "/manifest.json"
+  "/icons/icon-192.png",
+  "/icons/icon-512.png"
 ];
 
-// Instalar
+// INSTALACIÓN
 self.addEventListener("install", event => {
   event.waitUntil(
-    caches.open(CACHE_NAME).then(cache => cache.addAll(FILES_TO_CACHE))
+    caches.open(CACHE_NAME).then(cache => cache.addAll(ASSETS))
   );
   self.skipWaiting();
 });
 
-// Activar
+// ACTIVACIÓN
 self.addEventListener("activate", event => {
   event.waitUntil(
     caches.keys().then(keys =>
-      Promise.all(keys.map(k => k !== CACHE_NAME && caches.delete(k)))
+      Promise.all(
+        keys.filter(k => k !== CACHE_NAME).map(k => caches.delete(k))
+      )
     )
   );
   self.clients.claim();
 });
 
-// Fetch
+// FETCH
 self.addEventListener("fetch", event => {
   event.respondWith(
-    caches.match(event.request).then(
-      response => response || fetch(event.request)
+    fetch(event.request).catch(() =>
+      caches.match(event.request).then(res => res || caches.match(OFFLINE_URL))
     )
   );
 });

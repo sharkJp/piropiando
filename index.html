@@ -1,39 +1,68 @@
 <!doctype html>
 <html lang="es">
-
-<head>
+  <head>
     <meta charset="UTF-8" />
-    <meta name="theme-color" content="#ff7e67">
+    <meta name="theme-color" content="#ff7e67" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta
+      name="apple-mobile-web-app-status-bar-style"
+      content="black-translucent"
+    />
+    <meta name="apple-mobile-web-app-title" content="Guiño" />
+    <link rel="apple-touch-icon" href="/icons/icon-192.png" />
+
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Guiño - Micro-dosis de amor</title>
-    <link rel="stylesheet" href="css/estilos.css">
-<link rel="manifest" href="/manifest.json">
+    <link rel="stylesheet" href="css/estilos.css" />
+    <link rel="manifest" href="manifest.json" />
+  </head>
 
-</head>
+  <body>
+    <div id="splash">
+      <div class="splash-content">
+        <div class="splash-emoji">😏</div>
+        <h1 class="splash-title">ROMEO</h1>
+        <p class="splash-sub">piropos</p>
+      </div>
+    </div>
 
-<body>
     <section class="hero">
-        <h1 class="hero-logo hero-fixed" id="romero-title">
-            <span class="hero-pre">Me dicen</span>
-            <span class="hero-main">ROMEO</span>
-            <span class="hero-emoji">😏</span>
-        </h1>
+      <button id="mode-toggle" class="mode-toggle" aria-label="Cambiar modo">
+        🌙
+      </button>
 
-        <p class="hero-sub">piropos que se sienten</p>
+      <h1 class="hero-logo hero-fixed" id="romero-title">
+        <span class="hero-pre">Me dicen</span>
+        <span class="hero-main">ROMEO</span>
+        <span class="hero-emoji">😏</span>
+      </h1>
 
-        <div class="form-card">
-            <input id="author" placeholder="Tu nombre (opcional)" />
-            <textarea id="content" placeholder="Escribe tu piropo aquí..."></textarea>
-            <button id="send-btn" class="btn-primary">Enviar Guiño ✨</button>
-        </div>
+      <p class="hero-sub">piropos que se sienten</p>
 
-        <p id="feedback">✨ Ajustamos el lenguaje para que suene más romántico</p>
+      <form id="form-guino" class="form-card">
+        <input id="author" placeholder="Tu nombre (opcional)" />
+        <textarea
+          id="content"
+          placeholder="Escribe tu piropo aquí..."
+        ></textarea>
+        <button type="submit" id="send-btn" class="btn-primary">
+          Enviar Guiño ✨
+        </button>
+      </form>
 
-        <div id="piropos-feed" class="piropos-scroll"></div>
+      <p id="feedback">✨ Ajustamos el lenguaje para que suene más romántico</p>
+
+      <div id="piropos-feed" class="piropos-scroll"></div>
     </section>
 
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script>
+      if ("serviceWorker" in navigator) {
+        navigator.serviceWorker
+          .register("./sw.js")
+          .then(() => console.log("Service Worker registrado"));
+      }
+    </script>
     <script src="/js/main.js"></script>
-</body>
-
+  </body>
 </html>
