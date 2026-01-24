@@ -275,3 +275,24 @@ function lanzarCorazonDesdeForm() {
   document.body.appendChild(heart);
   setTimeout(() => heart.remove(), 1400);
 }
+let deferredPrompt;
+const installBtn = document.getElementById("installBtn");
+
+window.addEventListener("beforeinstallprompt", (e) => {
+  e.preventDefault();
+  deferredPrompt = e;
+  installBtn.hidden = false;
+});
+
+installBtn.addEventListener("click", async () => {
+  if (!deferredPrompt) return;
+
+  deferredPrompt.prompt();
+  const { outcome } = await deferredPrompt.userChoice;
+
+  if (outcome === "accepted") {
+    installBtn.hidden = true;
+  }
+
+  deferredPrompt = null;
+});
