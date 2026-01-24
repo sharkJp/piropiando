@@ -17,7 +17,6 @@
      overflow-x: hidden;
  }
 
-
  /* ===== SPLASH ===== */
  #splash {
      position: fixed;
@@ -84,8 +83,6 @@
          visibility: hidden;
      }
  }
-
-
 
  .hero {
      height: 100vh;
@@ -311,7 +308,6 @@
          font-size: .7rem;
      }
  }
-
 
  .hero-pre {
      font-weight: 400;

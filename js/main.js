@@ -293,6 +293,5 @@ installBtn.addEventListener("click", async () => {
   if (outcome === "accepted") {
     installBtn.hidden = true;
   }
-
   deferredPrompt = null;
 });
