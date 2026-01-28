@@ -70,7 +70,7 @@ async function inicializar() {
     .from("guinos")
     .select("*")
     .order("created_at", { ascending: false })
-    .limit(20);
+    // .limit(20);
 
   data?.forEach(p => mostrarPiropo(p, false));
 }
