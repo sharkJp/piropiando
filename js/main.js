@@ -139,9 +139,6 @@ feed.addEventListener("click", async e => {
   }
 
 
-  // const { error } = await supabaseClient
-  //   .from("reactions")
-  //   .insert([{ guino_id: guinoId, emoji }]);
 
   let error = null;
 
